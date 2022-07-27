@@ -22,7 +22,8 @@ FOREIGN KEY (classe_id) REFERENCES tb_classes(id)
 SELECT * FROM tb_classes;
 
 INSERT INTO tb_classes(classes) 
-VALUE ("Arqueiro"),("Sarcedote"),("Retalhador"),("Tormentador"),("Feiticeira"),("Barbaro"),("Mago"),("Guerreiro"),("Mistica"),("Arcano"),("Mercenario"),("Espiritualista");
+VALUE ("Arqueiro"),("Sarcedote"),("Retalhador"),("Tormentador"),
+("Feiticeira"),("Barbaro"),("Mago"),("Guerreiro"),("Mistica"),("Arcano"),("Mercenario"),("Espiritualista");
 
 INSERT INTO tb_personagens(nome,nivel,ataque,defesa,raca,classe_id)
 VALUE ("Paczinha", 13, 400,200,"Alada", 1),
@@ -34,6 +35,7 @@ VALUE ("Paczinha", 13, 400,200,"Alada", 1),
 ("Tigrinho", 13, 2000,4000,"Selvagem,", 7),
 ("FireBomb", 13, 2000,4000,"Humano",8);
 
+select * from tb_personagens;
 SELECT * FROM tb_personagens WHERE ataque> 2000;
 SELECT * FROM tb_personagens WHERE defesa> 1000 AND defesa <2000;
 SELECT * FROM tb_personagens WHERE nome LIKE "%C%";
@@ -41,7 +43,12 @@ SELECT * FROM tb_personagens WHERE nome LIKE "%C%";
 SELECT *
 FROM tb_classes
 INNER JOIN tb_personagens
-ON tb_classes.id = tb_personagens.id
-WHERE tb_classes.id= 2;
+ON tb_classes.id = tb_personagens.classe_id;
+
+SELECT *
+FROM tb_classes
+INNER JOIN tb_personagens
+ON tb_classes.id = tb_personagens.classe_id
+WHERE tb_classes.id=1;
 
 
